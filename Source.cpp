@@ -100,7 +100,7 @@ bool Rezolvare(int sudoku[9][9])
 
 	for (int valoare = 1;valoare <= 9;valoare++) {
 
-		if ((VerificareCol(sudoku, col, valoare)) && (VerificareRand(sudoku, ran, valoare)) && VerificarePatrat(sudoku, ran - rand % 3, col - col % 3, valoare)&&(sudoku[ran][col]==0)==true) 
+		if ((VerificareCol(sudoku, col, valoare)) && (VerificareRand(sudoku, ran, valoare)) && VerificarePatrat(sudoku, ran - ran % 3, col - col % 3, valoare)&&(sudoku[ran][col]==0)==true) 
 		{
 
 			sudoku[ran][col] = valoare;
