@@ -69,8 +69,8 @@ bool VerificareCol(int sudoku[9][9], int col, int valoare) {
 
 bool VerificarePatrat(int sudoku[9][9], int ran, int col, int valoare) {
 
-	for (int i = 0; i < 9; i++)
-		for (int j = 0; j < 9; j++)
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
 			if (sudoku[i + ran][j + col] == valoare)
 				return false;
 
