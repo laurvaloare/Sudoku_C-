@@ -14,10 +14,10 @@ int sudoku[9][9] = { { 5, 3, 0, 0, 7, 0, 0, 0, 0 },
 
 
 
-bool VerificareRand(int sudoku[9][9], int rand, int valoare);
+bool VerificareRand(int sudoku[9][9], int ran, int valoare);
 bool VerificareCol(int sudoku[9][9], int col, int valoare);
-bool VerificarePatrat(int sudoku[9][9], int rand, int col, int valoare);
-bool Rezolvat(int sudoku[9][9], int &rand, int &col);
+bool VerificarePatrat(int sudoku[9][9], int ran, int col, int valoare);
+bool Rezolvat(int sudoku[9][9], int &ran, int &col);
 bool Rezolvare(int sudoku[9][9]);
 
 int main() {
@@ -40,10 +40,10 @@ int main() {
 	return 0;
 }
 
-bool VerificareRand(int sudoku[9][9], int rand,int valoare) {
+bool VerificareRand(int sudoku[9][9], int ran,int valoare) {
 
 	for ( int col = 0;  col < 9;  col++)
-		if (sudoku[rand][col] == valoare)
+		if (sudoku[ran][col] == valoare)
 			return false;
 
 		
@@ -56,8 +56,8 @@ bool VerificareRand(int sudoku[9][9], int rand,int valoare) {
 
 bool VerificareCol(int sudoku[9][9], int col, int valoare) {
 
-	for (int rand = 0; rand < 9; rand++)
-		if (sudoku[rand][col] == valoare)
+	for (int ran = 0; ran < 9; ran++)
+		if (sudoku[ran][col] == valoare)
 			return false;
 
 		
@@ -67,11 +67,11 @@ bool VerificareCol(int sudoku[9][9], int col, int valoare) {
 
 }
 
-bool VerificarePatrat(int sudoku[9][9], int rand, int col, int valoare) {
+bool VerificarePatrat(int sudoku[9][9], int ran, int col, int valoare) {
 
 	for (int i = 0; i < 9; i++)
 		for (int j = 0; j < 9; j++)
-			if (sudoku[i + rand][j + col] == valoare)
+			if (sudoku[i + ran][j + col] == valoare)
 				return false;
 
 	return true;
@@ -80,9 +80,9 @@ bool VerificarePatrat(int sudoku[9][9], int rand, int col, int valoare) {
 
 bool Rezolvat(int sudoku[9][9], int &rand, int &col) {
 
-	for (rand = 0; rand< 9; rand++)
+	for (ran = 0; ran< 9; ran++)
 		for (col = 0; col < 9; col++)
-			if (sudoku[rand][col] == 0)
+			if (sudoku[ran][col] == 0)
 				return false;
 			
 	return true;
@@ -92,23 +92,23 @@ bool Rezolvat(int sudoku[9][9], int &rand, int &col) {
 bool Rezolvare(int sudoku[9][9])
 {
 
-	int rand = 0;
+	int ran = 0;
 	int col = 0;
 
-	if (Rezolvat(sudoku,rand,col))
+	if (Rezolvat(sudoku,ran,col))
 		return true;
 
 	for (int valoare = 1;valoare <= 9;valoare++) {
 
-		if ((VerificareCol(sudoku, col, valoare)) && (VerificareRand(sudoku, rand, valoare)) && VerificarePatrat(sudoku, rand - rand % 3, col - col % 3, valoare)&&(sudoku[rand][col]==0)==true) 
+		if ((VerificareCol(sudoku, col, valoare)) && (VerificareRand(sudoku, ran, valoare)) && VerificarePatrat(sudoku, ran - rand % 3, col - col % 3, valoare)&&(sudoku[ran][col]==0)==true) 
 		{
 
-			sudoku[rand][col] = valoare;
+			sudoku[ran][col] = valoare;
 
 			if (Rezolvare(sudoku))
 				return true;
 
-			sudoku[rand][col] = 0;
+			sudoku[ran][col] = 0;
 		}
 	}
 	return false;
