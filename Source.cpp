@@ -78,7 +78,7 @@ bool VerificarePatrat(int sudoku[9][9], int ran, int col, int valoare) {
 
 }
 
-bool Rezolvat(int sudoku[9][9], int &rand, int &col) {
+bool Rezolvat(int sudoku[9][9], int &ran, int &col) {
 
 	for (ran = 0; ran< 9; ran++)
 		for (col = 0; col < 9; col++)
